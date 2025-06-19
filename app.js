@@ -162,9 +162,17 @@ app.get('/tournament/:name', (req, res) => {
     if (['ignition', 'formation', 'sl'].includes(name)) {
         past = true;
     }
+
+    if( name === 'ignition'){
+        res.render('tournament_page', {
+            name: req.params.name, past: past, game1: 'BGMI', game2: 'Valorant', game3: 'CODM'
+        })
+    }
+    else{
     res.render('tournament_page', {
-        name: req.params.name, past: past
+        name: req.params.name, past: past, game1: 'BGMI', game2: 'Valorant', game3: 'Free Fire'
     });
+    }
 });
 
 app.listen(3000);
